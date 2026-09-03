@@ -1,7 +1,7 @@
 function ToolIcon() {
   return (
-    <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M14.7 6.3a4 4 0 0 0 3.1 5.7l-7.8 7.8a1.5 1.5 0 0 1-2.1-2.1l7.8-7.8a4 4 0 0 0 5.7-3.1l-2.8 1.1-2.9-2.9 1-2.7Z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m4 12 6-6M4 12l6 6M4 12h10m6 0-6-6m6 6-6 6" />
     </svg>
   )
 }
@@ -11,7 +11,7 @@ export default function Header({ onLogin }) {
     <header className="site-header">
       <div className="site-header__inner">
         <div className="brand">
-          <div className="brand__icon">
+          <div className="brand__icon" aria-hidden="true">
             <ToolIcon />
           </div>
           <span>Kaamsathi</span>

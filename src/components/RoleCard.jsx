@@ -1,9 +1,8 @@
 function SearchIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <circle cx="11" cy="11" r="6" />
-      <path d="m20 20-4.35-4.35" />
-      <path d="M8.5 11h5" />
+      <path d="m3 11 9-8 9 8" />
+      <path d="M6 10v9a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-9" />
     </svg>
   )
 }
@@ -39,12 +38,14 @@ export default function RoleCard({ title, subtitle, onClick, variant = 'customer
 
   return (
     <article className={`role-card role-card--${variant}`}>
-      <div className="role-card__content">
+      <div className="role-card__top">
         <div className={theme.iconWrap}>
           <Icon className="role-card__icon-svg" />
         </div>
+        <span className="role-card__tag">{variant === 'customer' ? 'Customer' : 'Professional'}</span>
+      </div>
 
-        <p className="role-card__label">{variant === 'customer' ? 'For your home' : 'Grow your work'}</p>
+      <div className="role-card__content">
         <h3>{title}</h3>
         <p className="role-card__description">{subtitle}</p>
       </div>
@@ -54,7 +55,10 @@ export default function RoleCard({ title, subtitle, onClick, variant = 'customer
         onClick={onClick}
         className={theme.button}
       >
-        {theme.cta}
+        <span>{theme.cta}</span>
+        <svg className="role-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
       </button>
     </article>
   )

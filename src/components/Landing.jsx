@@ -5,7 +5,7 @@ import RoleCard from './RoleCard'
 import CustomerView from './CustomerView'
 import WorkerView from './WorkerView'
 
-const serviceChips = ['Electrician', 'Plumber', 'Painter', 'Cleaner', 'AC repair']
+const serviceChips = ['Electrician', 'Plumber', 'Painter', 'Cleaner', 'AC repair', 'Cook']
 
 export default function Landing() {
   const [view, setView] = useState('landing')
@@ -19,12 +19,22 @@ export default function Landing() {
         {view === 'landing' && (
           <section className="landing-page">
             <div className="landing-hero">
+              <p className="hero-eyebrow">Serving 40+ localities near you</p>
               <h1>
                 Trusted help for every home job
               </h1>
               <p>
-                Find a verified electrician, plumber, cleaner or cook nearby - or get work as a skilled professional.
+                Verified electricians, plumbers, cleaners and cooks - booked in minutes, or find your next job.
               </p>
+              <div className="finder">
+                <input type="search" placeholder="What do you need help with?" aria-label="Search for a service" />
+                <button type="button" className="finder-go" aria-label="Search">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="m20 20-4.35-4.35" />
+                  </svg>
+                </button>
+              </div>
 
               <div className="service-chips">
                 {serviceChips.map((chip) => (
@@ -51,6 +61,21 @@ export default function Landing() {
                 variant="worker"
               />
             </div>
+
+            <section className="trust" aria-label="Kaamsathi statistics">
+              <div className="trust-item">
+                <strong>12k+</strong>
+                <span>Verified pros</span>
+              </div>
+              <div className="trust-item">
+                <strong>4.7</strong>
+                <span>Avg. rating</span>
+              </div>
+              <div className="trust-item">
+                <strong>40+</strong>
+                <span>Localities</span>
+              </div>
+            </section>
           </section>
         )}
 
