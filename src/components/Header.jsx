@@ -1,16 +1,29 @@
-import React from 'react'
+function ToolIcon() {
+  return (
+    <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M14.7 6.3a4 4 0 0 0 3.1 5.7l-7.8 7.8a1.5 1.5 0 0 1-2.1-2.1l7.8-7.8a4 4 0 0 0 5.7-3.1l-2.8 1.1-2.9-2.9 1-2.7Z" />
+    </svg>
+  )
+}
 
 export default function Header({ onLogin }) {
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-700 mb-6">
-      <div className="max-w-3xl mx-auto flex items-center justify-between p-4">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
-            <svg className="w-5 h-5 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6M9 16h6M9 8h6" /></svg>
+    <header className="site-header">
+      <div className="site-header__inner">
+        <div className="brand">
+          <div className="brand__icon">
+            <ToolIcon />
           </div>
-          <span className="text-lg font-medium">Kaamsathi</span>
+          <span>Kaamsathi</span>
         </div>
-        <button onClick={onLogin} className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-800 text-sm">Log in</button>
+
+        <button
+          type="button"
+          onClick={onLogin}
+          className="login-button"
+        >
+          Log in
+        </button>
       </div>
     </header>
   )

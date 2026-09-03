@@ -1,31 +1,61 @@
-// import React from 'react'
+function SearchIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <circle cx="11" cy="11" r="6" />
+      <path d="m20 20-4.35-4.35" />
+      <path d="M8.5 11h5" />
+    </svg>
+  )
+}
+
+function BriefcaseIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="7" width="18" height="12" rx="2" />
+      <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" />
+      <path d="M3 12h18" />
+    </svg>
+  )
+}
+
+const cardTheme = {
+  customer: {
+    iconWrap: 'role-card__icon role-card__icon--customer',
+    button: 'role-card__button role-card__button--customer',
+    cta: 'Continue as customer',
+    Icon: SearchIcon,
+  },
+  worker: {
+    iconWrap: 'role-card__icon role-card__icon--worker',
+    button: 'role-card__button role-card__button--worker',
+    cta: 'Continue as worker',
+    Icon: BriefcaseIcon,
+  },
+}
 
 export default function RoleCard({ title, subtitle, onClick, variant = 'customer' }) {
-  const bg = variant === 'customer' ? 'bg-indigo-50' : 'bg-yellow-50'
-  const accent = variant === 'customer' ? 'text-indigo-600' : 'text-yellow-600'
+  const theme = cardTheme[variant]
+  const Icon = theme.Icon
 
   return (
-    <div className={`border border-gray-200 dark:border-gray-700 rounded-lg p-6 ${bg} flex flex-col`}> 
-      <div className="flex flex-col items-center mb-4">
-        <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-3 bg-white shadow-sm">
-          <div className={`${accent} text-2xl`}>{variant === 'customer' ? '🔎' : '🧰'}</div>
+    <article className={`role-card role-card--${variant}`}>
+      <div className="role-card__content">
+        <div className={theme.iconWrap}>
+          <Icon className="role-card__icon-svg" />
         </div>
-        <h3 className="text-lg font-semibold mb-1">{title}</h3>
-        <p className="text-sm text-gray-500">{subtitle}</p>
+
+        <p className="role-card__label">{variant === 'customer' ? 'For your home' : 'Grow your work'}</p>
+        <h3>{title}</h3>
+        <p className="role-card__description">{subtitle}</p>
       </div>
-      <div className="mt-auto">
-        <button
-          type="button"
-          onClick={onClick}
-          className={`w-full py-3 rounded-full text-sm font-medium appearance-none border-0 focus:outline-none transition-colors ${
-            variant === 'customer'
-              ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
-              : 'bg-yellow-500 hover:bg-yellow-600 text-white'
-          }`}
-        >
-          Continue
-        </button>
-      </div>
-    </div>
+
+      <button
+        type="button"
+        onClick={onClick}
+        className={theme.button}
+      >
+        {theme.cta}
+      </button>
+    </article>
   )
 }
