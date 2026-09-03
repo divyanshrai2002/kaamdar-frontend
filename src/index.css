@@ -45,6 +45,38 @@ select { font: inherit; }
   padding: 16px 0 14px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1.4px solid #e4e2db;
+  border-radius: 999px;
+  background: #fff;
+  padding: 4px;
+}
+
+.language-toggle button {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #565b72;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
+.language-toggle button.is-active {
+  background: #25459c;
+  color: #fff;
+}
+
 .brand {
   display: flex;
   align-items: center;

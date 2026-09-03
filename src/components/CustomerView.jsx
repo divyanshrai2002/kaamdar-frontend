@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
-export default function CustomerView({ onBack, initialTab = 'register' }) {
+export default function CustomerView({ onBack, initialTab = 'register', language = 'en', translations }) {
   const [tab, setTab] = useState(initialTab)
+  const t = translations[language]
 
   return (
     <div className="auth-panel mx-auto max-w-md rounded-[2rem] border border-indigo-100 bg-white/95 p-6 shadow-[0_20px_80px_-40px_rgba(79,70,229,0.45)] sm:p-8">
@@ -10,7 +11,7 @@ export default function CustomerView({ onBack, initialTab = 'register' }) {
         onClick={onBack}
         className="mb-6 rounded-full border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-50"
       >
-        ← Back
+        ← {t.back}
       </button>
 
       <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-700">
@@ -21,8 +22,8 @@ export default function CustomerView({ onBack, initialTab = 'register' }) {
         </svg>
       </div>
 
-      <h2 className="mb-1 text-center text-2xl font-semibold tracking-tight text-slate-800">Customer account</h2>
-      <p className="mb-6 text-center text-sm text-slate-500">Find and book trusted workers nearby.</p>
+      <h2 className="mb-1 text-center text-2xl font-semibold tracking-tight text-slate-800">{t.customerAccount}</h2>
+      <p className="mb-6 text-center text-sm text-slate-500">{t.customerIntro}</p>
 
       <div className="mb-6 grid grid-cols-2 rounded-2xl border border-slate-200 bg-slate-50 p-1">
         <button
@@ -32,7 +33,7 @@ export default function CustomerView({ onBack, initialTab = 'register' }) {
             tab === 'register' ? 'bg-indigo-100 text-indigo-700' : 'text-slate-500'
           }`}
         >
-          Register
+          {t.register}
         </button>
         <button
           type="button"
@@ -41,40 +42,40 @@ export default function CustomerView({ onBack, initialTab = 'register' }) {
             tab === 'login' ? 'bg-indigo-100 text-indigo-700' : 'text-slate-500'
           }`}
         >
-          Log in
+          {t.loginTab}
         </button>
       </div>
 
       {tab === 'register' ? (
         <div className="space-y-4">
           <label className="block text-sm font-medium text-slate-600">
-            Full name
-            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="Priya Nair" />
+            {t.fullName}
+            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={language === 'hi' ? 'प्रिय नायर' : 'Priya Nair'} />
           </label>
           <label className="block text-sm font-medium text-slate-600">
-            Phone number
+            {t.phoneNumber}
             <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="+91 98xxxxxx21" />
           </label>
           <label className="block text-sm font-medium text-slate-600">
-            Home address
-            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="Sector 14, Gurugram" />
+            {t.homeAddress}
+            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={language === 'hi' ? 'सेक्टर 14, गुरुग्राम' : 'Sector 14, Gurugram'} />
           </label>
           <button type="button" className="w-full rounded-2xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">
-            Create account
+            {t.createAccount}
           </button>
         </div>
       ) : (
         <div className="space-y-4">
           <label className="block text-sm font-medium text-slate-600">
-            Phone number
+            {t.phoneNumber}
             <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="+91 98xxxxxx21" />
           </label>
           <label className="block text-sm font-medium text-slate-600">
-            OTP
-            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="4-digit code" />
+            {t.otp}
+            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={t.fourDigitCode} />
           </label>
           <button type="button" className="w-full rounded-2xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">
-            Log in
+            {t.loginTab}
           </button>
         </div>
       )}

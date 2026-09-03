@@ -6,7 +6,9 @@ function ToolIcon() {
   )
 }
 
-export default function Header({ onLogin }) {
+export default function Header({ onLogin, language = 'en', setLanguage, translations }) {
+  const t = translations[language]
+
   return (
     <header className="site-header">
       <div className="site-header__inner">
@@ -14,16 +16,35 @@ export default function Header({ onLogin }) {
           <div className="brand__icon" aria-hidden="true">
             <ToolIcon />
           </div>
-          <span>Kaamsathi</span>
+          <span>{t.brand}</span>
         </div>
 
-        <button
-          type="button"
-          onClick={onLogin}
-          className="login-button"
-        >
-          Log in
-        </button>
+        <div className="header-actions">
+          <div className="language-toggle" aria-label={t.languageLabel}>
+            <button
+              type="button"
+              className={language === 'en' ? 'is-active' : ''}
+              onClick={() => setLanguage('en')}
+            >
+              {t.english}
+            </button>
+            <button
+              type="button"
+              className={language === 'hi' ? 'is-active' : ''}
+              onClick={() => setLanguage('hi')}
+            >
+              {t.hindi}
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onClick={onLogin}
+            className="login-button"
+          >
+            {t.login}
+          </button>
+        </div>
       </div>
     </header>
   )

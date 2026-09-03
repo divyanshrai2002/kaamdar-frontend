@@ -21,18 +21,16 @@ const cardTheme = {
   customer: {
     iconWrap: 'role-card__icon role-card__icon--customer',
     button: 'role-card__button role-card__button--customer',
-    cta: 'Continue as customer',
     Icon: SearchIcon,
   },
   worker: {
     iconWrap: 'role-card__icon role-card__icon--worker',
     button: 'role-card__button role-card__button--worker',
-    cta: 'Continue as worker',
     Icon: BriefcaseIcon,
   },
 }
 
-export default function RoleCard({ title, subtitle, onClick, variant = 'customer' }) {
+export default function RoleCard({ title, subtitle, onClick, variant = 'customer', tag, cta }) {
   const theme = cardTheme[variant]
   const Icon = theme.Icon
 
@@ -42,7 +40,7 @@ export default function RoleCard({ title, subtitle, onClick, variant = 'customer
         <div className={theme.iconWrap}>
           <Icon className="role-card__icon-svg" />
         </div>
-        <span className="role-card__tag">{variant === 'customer' ? 'Customer' : 'Professional'}</span>
+        <span className="role-card__tag">{tag ?? (variant === 'customer' ? 'Customer' : 'Professional')}</span>
       </div>
 
       <div className="role-card__content">
@@ -55,7 +53,7 @@ export default function RoleCard({ title, subtitle, onClick, variant = 'customer
         onClick={onClick}
         className={theme.button}
       >
-        <span>{theme.cta}</span>
+        <span>{cta ?? (variant === 'customer' ? 'Continue as customer' : 'Continue as worker')}</span>
         <svg className="role-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M5 12h14m-6-6 6 6-6 6" />
         </svg>
