@@ -53,6 +53,10 @@ export default function CustomerView({ onBack, initialTab = 'register', language
             <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={language === 'hi' ? 'प्रिय नायर' : 'Priya Nair'} />
           </label>
           <label className="block text-sm font-medium text-slate-600">
+            {t.email}
+            <input type="email" className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={language === 'hi' ? 'priya@email.com' : 'priya@email.com'} />
+          </label>
+          <label className="block text-sm font-medium text-slate-600">
             {t.phoneNumber}
             <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="+91 98xxxxxx21" />
           </label>
@@ -61,18 +65,18 @@ export default function CustomerView({ onBack, initialTab = 'register', language
             <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={language === 'hi' ? 'सेक्टर 14, गुरुग्राम' : 'Sector 14, Gurugram'} />
           </label>
           <button type="button" className="w-full rounded-2xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">
-            {t.createAccount}
+            {t.sendOtp}
           </button>
         </div>
       ) : (
         <div className="space-y-4">
           <label className="block text-sm font-medium text-slate-600">
-            {t.phoneNumber}
-            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="+91 98xxxxxx21" />
+            {t.email}
+            <input type="email" className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="you@example.com" />
           </label>
           <label className="block text-sm font-medium text-slate-600">
-            {t.otp}
-            <input className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder={t.fourDigitCode} />
+            {t.password}
+            <input type="password" className="mt-1.5 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none transition focus:border-indigo-300" placeholder="••••••••" />
           </label>
           <button type="button" className="w-full rounded-2xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">
             {t.loginTab}
